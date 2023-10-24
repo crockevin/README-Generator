@@ -12,17 +12,17 @@ const questions = [{
 {
     type: 'input',
     message: 'Give a description of your project',
-    name: 'desc',
+    name: 'desc'
 },
 {
     type: 'input',
     message: 'What needs to be installed to get this app to run',
-    name: 'install',
+    name: 'install'
 },
 {
     type: 'input',
     message: 'How do you use this app',
-    name: 'usage',
+    name: 'usage'
 },
 {
     type: 'list',
@@ -33,21 +33,47 @@ const questions = [{
 {
     type: 'input',
     message: 'Who else worked on this project',
-    name: 'cont',
+    name: 'cont'
 },
 {
     type: 'input',
     message: 'How would you test your app',
-    name: 'test',
+    name: 'test'
+},
+{
+    type: 'input',
+    message: 'What is your Github username',
+    name: 'username',
+    validate: input => (input.trim() === '') ? 'This answer is required, Please enter the title of your project!!' : true
+},
+{
+    type: 'input',
+    message: 'What is your email',
+    name: 'email',
+    validate: input => (!input.includes('@'))? 'Not a valid email' : true
 }
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) { }
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, (err)=> {
+        if(err){
+            console.log(err)
+        } else {
+            console.log('file made')
+        }
+        
+    })
+ }
 
 // TODO: Create a function to initialize app
 function init() { 
     inquirer.prompt(questions)
+    .then((answers) => {
+        const fileName = 'README.md'
+        const data = generateMarkdown(answers)
+        writeToFile(fileName, data)
+    })
 }
 
 // Function call to initialize app
