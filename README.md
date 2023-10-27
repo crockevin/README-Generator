@@ -15,6 +15,8 @@
 
 [Testing](#testing)
 
+[Sources](#sources)
+
 [Question](#question)
 
 
@@ -23,7 +25,8 @@
   Create a professional Readme for projects
 ## Installation
 
-  node js
+  node js 
+  npm inquirer
 ## Usage
 
   You use the terminal
@@ -36,6 +39,12 @@
 ## Testing
 
   node index.js
+
+## Sources
+
+Badges link: https://gist.github.com/lukas-h/2a5d00690736b4c3a7ba
+
+Starter code: https://github.com/coding-boot-camp/potential-enigma
 ## Question
 
   To reach for me for question about this project:
