@@ -3,11 +3,11 @@ const inquirer = require('inquirer')
 const fs = require('fs')
 const generateMarkdown = require('./utils/generateMarkdown')
 // TODO: Create an array of questions for user input
-const questions = [{
+const questions = [{// questions
     type: 'input',
     message: 'What is the title of that project',
     name: 'name',
-    validate: input => (input.trim() === '') ? 'This answer is required, Please enter the title of your project!!' : true
+    validate: input => (input.trim() === '') ? 'This answer is required, Please enter the title of your project!!' : true// this question just be answered
 },
 {
     type: 'input',
@@ -50,13 +50,13 @@ const questions = [{
     type: 'input',
     message: 'What is your email',
     name: 'email',
-    validate: input => (!input.includes('@'))? 'Not a valid email' : true
+    validate: input => (!input.includes('@'))? 'Not a valid email' : true// answer must include @
 }
 ];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, (err)=> {
+    fs.writeFile(fileName, data, (err)=> {//writes file
         if(err){
             console.log(err)
         } else {
@@ -71,8 +71,8 @@ function init() {
     inquirer.prompt(questions)
     .then((answers) => {
         const fileName = 'README.md'
-        const data = generateMarkdown(answers)
-        writeToFile(fileName, data)
+        const data = generateMarkdown(answers)// calls generateMarkDwon with the answers as the parameter
+        writeToFile(fileName, data)// takes the return from generateMarkDown
     })
 }
 
